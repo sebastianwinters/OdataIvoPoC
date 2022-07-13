@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "3f53cdfa-73ae-44e0-9bca-b7005d756077",
+		"name": "OData PoC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SWinters Azure",
+			"item": [
+				{
+					"name": "Get Insolventies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata.metadata=full;odata.streaming=true",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies",
+							"protocol": "https",
+							"host": [
+								"swi-as-odatapoc",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"odata",
+								"Insolventies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Insolventie publicaties",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata.metadata=full;odata.streaming=true",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies('INS-1')/Publicaties",
+							"protocol": "https",
+							"host": [
+								"swi-as-odatapoc",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"odata",
+								"Insolventies('INS-1')",
+								"Publicaties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Insolventie schuldenaar",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata.metadata=full;odata.streaming=true",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies('INS-1')/Schuldenaar",
+							"protocol": "https",
+							"host": [
+								"swi-as-odatapoc",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"odata",
+								"Insolventies('INS-1')",
+								"Schuldenaar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Insolventie + expand",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies('INS-1')?$expand=Schuldenaar,Publicaties",
+							"protocol": "https",
+							"host": [
+								"swi-as-odatapoc",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"odata",
+								"Insolventies('INS-1')"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Schuldenaar,Publicaties"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Publicaties",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata.metadata=full;odata.streaming=true",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Publicaties",
+							"protocol": "https",
+							"host": [
+								"swi-as-odatapoc",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"odata",
+								"Publicaties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Select derived field",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata.metadata=full;odata.streaming=true",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies('INS-1')/Schuldenaar?$select=OdataIvoPoC.Models.NatuurlijkPersoon/Voornaam",
+							"protocol": "https",
+							"host": [
+								"swi-as-odatapoc",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"odata",
+								"Insolventies('INS-1')",
+								"Schuldenaar"
+							],
+							"query": [
+								{
+									"key": "$select",
+									"value": "OdataIvoPoC.Models.NatuurlijkPersoon/Voornaam"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter on sub collection property",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata.metadata=full;odata.streaming=true",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies?$filter=Publicaties/any(p:p/Id eq 'PUB-1')&$expand=Publicaties",
+							"protocol": "https",
+							"host": [
+								"swi-as-odatapoc",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"odata",
+								"Insolventies"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "Publicaties/any(p:p/Id eq 'PUB-1')"
+								},
+								{
+									"key": "$expand",
+									"value": "Publicaties"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter on derived sub prop ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata.metadata=full;odata.streaming=true",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies?$filter=Schuldenaar/OdataIvoPoC.Models.NatuurlijkPersoon/Voornaam eq 'Sebastian'&$expand=Schuldenaar",
+							"protocol": "https",
+							"host": [
+								"swi-as-odatapoc",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"odata",
+								"Insolventies"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "Schuldenaar/OdataIvoPoC.Models.NatuurlijkPersoon/Voornaam eq 'Sebastian'"
+								},
+								{
+									"key": "$expand",
+									"value": "Schuldenaar"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
