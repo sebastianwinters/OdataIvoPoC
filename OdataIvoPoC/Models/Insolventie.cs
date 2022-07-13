@@ -11,5 +11,7 @@ namespace OdataIvoPoC.Models
         public DateOnly EindDatum { get; set; }
 
         public List<Publicatie> Publicaties { get; set; }
+
+        public Persoon Schuldenaar { get; set; }
     }
 }

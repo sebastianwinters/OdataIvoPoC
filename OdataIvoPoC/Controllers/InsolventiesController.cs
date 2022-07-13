@@ -31,11 +31,18 @@ namespace OdataIvoPoC.Controllers
         }
 
         [HttpGet("odata/Insolventies/{key}/Publicaties")]
-        //[HttpGet("odata/Insolventies({key})/Publicaties")]
         [EnableQuery]
         public IActionResult GetPublicaties(string key)
         {
             return Ok(_insolventieService.GetById(key).Single().Publicaties.AsQueryable());
+        }
+
+
+        [HttpGet("odata/Insolventies/{key}/Schuldenaar")]
+        [EnableQuery]
+        public IActionResult GetSchuldenaar(string key)
+        {
+            return Ok(_insolventieService.GetById(key).Single().Schuldenaar);
         }
     }
 }

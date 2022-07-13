@@ -46,35 +46,9 @@ static IEdmModel GetConventionModel()
     var builder = new ODataConventionModelBuilder();
     var insolventies = builder.EntitySet<Insolventie>("Insolventies");
     var publicaties = builder.EntitySet<Publicatie>("Publicaties");
+    var personen = builder.EntitySet<Persoon>("Personen");
 
     var model = builder.GetEdmModel();
-
-    //var insovlentiesSet = (EdmEntitySet)model.FindDeclaredEntitySet("Insolventies");
-    //var publicatiesSet = (EdmEntitySet)model.FindDeclaredEntitySet("Publicaties");
-    //var insovlentieType = (EdmEntityType)model.FindDeclaredType("OdataIvoPoC.Models.Insolventie");
-    //var publicatieType = (EdmEntityType)model.FindDeclaredType("OdataIvoPoC.Models.Publicatie");
-
-    ////
-    //// Add the Customer@odata.navigationLink property
-    ////
-    //var publicatieProperty = new EdmNavigationPropertyInfo();
-    //publicatieProperty.TargetMultiplicity = EdmMultiplicity.Many;
-    //publicatieProperty.Target = publicatieType;
-    //publicatieProperty.ContainsTarget = false;
-    //publicatieProperty.OnDelete = EdmOnDeleteAction.None;
-    //publicatieProperty.Name = "Publicaties";
-
-    //var navigationProperty = insovlentieType.AddUnidirectionalNavigation(publicatieProperty);
-    //insovlentiesSet.AddNavigationTarget(navigationProperty, publicatiesSet);
-
-    ////
-    //// Enable Odata endpoint
-    ////
-    //var linkBuilder = EdmModelLinkBuilderExtensions.GetNavigationSourceLinkBuilder(model, insovlentiesSet);
-
-    //linkBuilder.AddNavigationPropertyLinkBuilder(navigationProperty,
-    //    new NavigationLinkBuilder((context, property) =>
-    //        context.GenerateNavigationPropertyLink(property, false), false));
 
     return model;
 }

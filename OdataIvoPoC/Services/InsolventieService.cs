@@ -18,7 +18,19 @@ namespace OdataIvoPoC.Services
                     {
                         publicatieService.GetById("PUB-1").Single(),
                         publicatieService.GetById("PUB-2").Single()
-                    } 
+                    },
+                    Schuldenaar = new NatuurlijkPersoon{ Id = "np-1", Voornaam = "Sebastian"}
+                },
+                new Insolventie{
+                    Id = "INS-2",
+                    Soort = "A",
+                    EindDatum = new DateOnly(2022, 4, 23),
+                    Publicaties = new List<Publicatie>()
+                    {
+                        publicatieService.GetById("PUB-3").Single(),
+                        publicatieService.GetById("PUB-4").Single()
+                    },
+                    Schuldenaar = new RechtsPersoon{ Id = "rp-1", KvKnummer = "KVK123"}
                 }
             };
         }
