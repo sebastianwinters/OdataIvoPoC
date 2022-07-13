@@ -1,4 +1,6 @@
-﻿using OdataIvoPoC.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
+using OdataIvoPoC.Models;
 
 namespace OdataIvoPoC.Services
 {
@@ -17,11 +19,15 @@ namespace OdataIvoPoC.Services
             };
         }
 
+        [HttpGet]
+        [EnableQuery]
         public IQueryable<Publicatie> GetAll()
         {
             return _publicatieList.AsQueryable();
         }
 
+        [HttpGet]
+        [EnableQuery]
         public IQueryable<Publicatie> GetById(string id)
         {
             return _publicatieList.Where(p => p.Id == id).AsQueryable();
