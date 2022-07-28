@@ -72,7 +72,39 @@ namespace OdataIvoPoC.Services
                             }
                         } 
                     }
-                }
+                },
+                new Insolventie{
+                    Id = "INS-3",
+                    Soort = "A",
+                    EindDatum = new DateOnly(2022, 2, 23),
+                    Publicaties = new List<Publicatie>()
+                    {
+                        publicatieService.GetById("PUB-5").Single()
+                    },
+                    Schuldenaar = new EigenaarZonderRechtspersoon
+                    {
+                        Id = "zp-1",                        
+                        Voornaam = "Jan-Willem",
+                        Adressen = new List<Adres>()
+                        {
+                            new Adres(){ Straat = "zijnstraat", Huisnummer = 92, Postcode = "6743BC", Plaats = "Zeist" }
+                        },
+                        KvKnummer = "KVK999",
+                        Handelsnamen = new List<Handelsnaam>()
+                        {
+                            new Handelsnaam()
+                            {
+                                Id = "han-3",
+                                Naam = "handelsnaam 3",
+                                IsVervallen = true,
+                                Adressen = new List<Adres>()
+                                {
+                                    new Adres(){ Straat = "zijnstraat", Huisnummer = 92, Postcode = "6743BC", Plaats = "Zeist" }
+                                }
+                            }
+                        }
+                    }
+                },
             };
         }
 

@@ -15,7 +15,8 @@ namespace OdataIvoPoC.Services
                 new Publicatie{ Id = "PUB-1", Soort = 1, Datum = new DateOnly(2022, 01, 11) },
                 new Publicatie{ Id = "PUB-2", Soort = 1, Datum = new DateOnly(2022, 02, 01) },
                 new Publicatie{ Id = "PUB-3", Soort = 1, Datum = new DateOnly(2022, 02, 14) },
-                new Publicatie{ Id = "PUB-4", Soort = 1, Datum = new DateOnly(2022, 02, 21) }
+                new Publicatie{ Id = "PUB-4", Soort = 1, Datum = new DateOnly(2022, 02, 21) },
+                new Publicatie{ Id = "PUB-5", Soort = 1, Datum = new DateOnly(2022, 01, 15) }
             };
         }
 
