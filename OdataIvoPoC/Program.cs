@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.OData;
+﻿using Microsoft.AspNetCore.OData;
 using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
-using Microsoft.AspNetCore.OData.Edm;
-using Microsoft.AspNetCore.OData.Formatter;
 using OdataIvoPoC.Models;
 using OdataIvoPoC.Services;
 
@@ -19,6 +16,7 @@ builder.Services.AddControllers().AddOData(options => options
 
 builder.Services.AddTransient<IInsolventieService, InsolventieService>();
 builder.Services.AddTransient<IPublicatieService, PublicatieService>();
+builder.Services.AddTransient<ISchuldenaarService, SchuldenaarService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
