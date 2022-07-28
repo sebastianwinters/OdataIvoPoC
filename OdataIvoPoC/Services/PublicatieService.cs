@@ -20,15 +20,11 @@ namespace OdataIvoPoC.Services
             };
         }
 
-        [HttpGet]
-        [EnableQuery]
         public IQueryable<Publicatie> GetAll()
         {
             return _publicatieList.AsQueryable();
         }
 
-        [HttpGet]
-        [EnableQuery]
         public IQueryable<Publicatie> GetById(string id)
         {
             return _publicatieList.Where(p => p.Id == id).AsQueryable();
