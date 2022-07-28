@@ -46,7 +46,8 @@ static IEdmModel GetConventionModel()
     var builder = new ODataConventionModelBuilder();
     var insolventies = builder.EntitySet<Insolventie>("Insolventies");
     var publicaties = builder.EntitySet<Publicatie>("Publicaties");
-    var personen = builder.EntitySet<Persoon>("Personen");
+    var schuldenaars = builder.EntitySet<Schuldenaar>("Schuldenaars");
+    var handelsnamen = builder.EntitySet<Handelsnaam>("Handelsnamen");
 
     var model = builder.GetEdmModel();
 

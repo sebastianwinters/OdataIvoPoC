@@ -12,6 +12,6 @@ namespace OdataIvoPoC.Models
 
         public List<Publicatie> Publicaties { get; set; }
 
-        public Persoon Schuldenaar { get; set; }
+        public Schuldenaar Schuldenaar { get; set; }
     }
 }
