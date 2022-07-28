@@ -82,12 +82,12 @@ namespace OdataIvoPoC.Services
 
         public IQueryable<Schuldenaar> GetAll()
         {
-            throw new NotImplementedException();
+            return _schuldenaars.AsQueryable();
         }
 
         public IQueryable<Schuldenaar> GetById(string id)
         {
-            throw new NotImplementedException();
+            return _schuldenaars.Where(p => p.Id == id).AsQueryable();
         }
     }
 }
