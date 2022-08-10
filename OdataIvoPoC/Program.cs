@@ -47,6 +47,15 @@ static IEdmModel GetConventionModel()
     var schuldenaars = builder.EntitySet<Schuldenaar>("Schuldenaars");
     var handelsnamen = builder.EntitySet<Handelsnaam>("Handelsnamen");
 
+    var action = builder.EntityType<Schuldenaar>()
+        .Collection
+        .Action("ZoekPersoon")
+        .ReturnsCollectionViaEntitySetPath<Schuldenaar>("bindingParameter");
+    action.Parameter<string>("voorvoegsel");
+    action.Parameter<string>("achternaam");
+    var p1 = action.Parameter<DateOnly>("geboorteDatum");
+    p1.Optional();
+
     var model = builder.GetEdmModel();
 
     return model;

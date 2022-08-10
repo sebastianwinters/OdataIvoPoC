@@ -13,7 +13,9 @@ namespace OdataIvoPoC.Services
                 new NatuurlijkPersoon
                 {
                     Id = "np-1",
-                    Voornaam = "Sebastian",
+                    Voorvoegsel = "de",
+                    Achternaam = "Winter",
+                    GeboorteDatum = new DateOnly(1982, 11, 11),
                     Adressen = new List<Adres>()
                     {
                         new Adres(){ Straat = "mijnstraat", Huisnummer = 98, Postcode = "2211AB", Plaats = "Utrecht" }
@@ -57,7 +59,9 @@ namespace OdataIvoPoC.Services
                 new EigenaarZonderRechtspersoon
                 {
                     Id = "zp-1",
-                    Voornaam = "Jan-Willem",
+                    Voorvoegsel = string.Empty,
+                    Achternaam = "Jansen",
+                    GeboorteDatum = new DateOnly(1976, 2, 19),
                     Adressen = new List<Adres>()
                     {
                         new Adres(){ Straat = "zijnstraat", Huisnummer = 92, Postcode = "6743BC", Plaats = "Zeist" }
