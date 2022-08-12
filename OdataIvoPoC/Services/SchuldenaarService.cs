@@ -24,6 +24,7 @@ namespace OdataIvoPoC.Services
                 new Organisatie
                 {
                     Id = "rp-1",
+                    Naam = "MijnBV",
                     KvKnummer = "KVK123",
                     Adressen = new List<Adres>()
                     {

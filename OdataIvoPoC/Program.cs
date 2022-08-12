@@ -47,14 +47,25 @@ static IEdmModel GetConventionModel()
     var schuldenaars = builder.EntitySet<Schuldenaar>("Schuldenaars");
     var handelsnamen = builder.EntitySet<Handelsnaam>("Handelsnamen");
 
-    var action = builder.EntityType<Schuldenaar>()
+    var zoekPersoonAction = builder.EntityType<NatuurlijkPersoon>()
         .Collection
         .Action("ZoekPersoon")
-        .ReturnsCollectionViaEntitySetPath<Schuldenaar>("bindingParameter");
-    action.Parameter<string>("voorvoegsel");
-    action.Parameter<string>("achternaam");
-    var p1 = action.Parameter<DateOnly>("geboorteDatum");
-    p1.Optional();
+        .ReturnsCollectionViaEntitySetPath<NatuurlijkPersoon>("bindingParameter");
+    zoekPersoonAction.Parameter<string>("voorvoegsel").Optional();
+    zoekPersoonAction.Parameter<string>("achternaam").Optional();
+    zoekPersoonAction.Parameter<DateOnly>("geboorteDatum").Optional();
+    zoekPersoonAction.Parameter<string>("postcode").Optional();
+    zoekPersoonAction.Parameter<int>("huisnummer").Optional();
+
+    var zoekOrganisatieAction = builder.EntityType<Organisatie>()
+        .Collection
+        .Action("ZoekOrganisatie")
+        .ReturnsCollectionViaEntitySetPath<Organisatie>("bindingParameter");
+    zoekOrganisatieAction.Parameter<string>("organisatieNaam").Optional();
+    zoekOrganisatieAction.Parameter<string>("handelsNaam").Optional();
+    zoekOrganisatieAction.Parameter<string>("kvkNummer").Optional();
+    zoekOrganisatieAction.Parameter<string>("postcode").Optional();
+    zoekOrganisatieAction.Parameter<string>("huisnummer").Optional();
 
     var model = builder.GetEdmModel();
 
