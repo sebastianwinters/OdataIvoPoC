@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3f53cdfa-73ae-44e0-9bca-b7005d756077",
+		"_postman_id": "473ed7dc-ad8b-4425-b22b-f0210a0dc9ff",
 		"name": "OData PoC",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19151669"
 	},
 	"item": [
 		{
@@ -75,7 +76,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies('INS-1')/Schuldenaar",
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies('INS-3')/Schuldenaar?$expand=OdataIvoPoC.Models.EigenaarZonderRechtspersoon/Handelsnamen",
 							"protocol": "https",
 							"host": [
 								"swi-as-odatapoc",
@@ -84,8 +85,14 @@
 							],
 							"path": [
 								"odata",
-								"Insolventies('INS-1')",
+								"Insolventies('INS-3')",
 								"Schuldenaar"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "OdataIvoPoC.Models.EigenaarZonderRechtspersoon/Handelsnamen"
+								}
 							]
 						}
 					},
@@ -112,6 +119,40 @@
 								{
 									"key": "$expand",
 									"value": "Schuldenaar,Publicaties"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get insolventie schuldenaar + expand derived",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata.metadata=full;odata.streaming=true",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies('INS-2')/Schuldenaar?$expand=OdataIvoPoC.Models.Organisatie/Handelsnamen",
+							"protocol": "https",
+							"host": [
+								"swi-as-odatapoc",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"odata",
+								"Insolventies('INS-2')",
+								"Schuldenaar"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "OdataIvoPoC.Models.Organisatie/Handelsnamen"
 								}
 							]
 						}
@@ -157,7 +198,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies('INS-1')/Schuldenaar?$select=OdataIvoPoC.Models.NatuurlijkPersoon/Voornaam",
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Insolventies('INS-1')/Schuldenaar?$select=OdataIvoPoC.Models.NatuurlijkPersoon/Achternaam",
 							"protocol": "https",
 							"host": [
 								"swi-as-odatapoc",
@@ -172,7 +213,7 @@
 							"query": [
 								{
 									"key": "$select",
-									"value": "OdataIvoPoC.Models.NatuurlijkPersoon/Voornaam"
+									"value": "OdataIvoPoC.Models.NatuurlijkPersoon/Achternaam"
 								}
 							]
 						}
@@ -247,6 +288,88 @@
 								{
 									"key": "$expand",
 									"value": "Schuldenaar"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Default.ZoekPersoon",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata.metadata=full;odata.streaming=true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"voorvoegsel\": \"de\",\r\n    \"achternaam\": \"Winter\",\r\n    \"postcode\": \"2211AB\",\r\n    \"huisnummer\": 98\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Schuldenaars/OdataIvoPoC.Models.NatuurlijkPersoon/Default.ZoekPersoon",
+							"protocol": "https",
+							"host": [
+								"swi-as-odatapoc",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"odata",
+								"Schuldenaars",
+								"OdataIvoPoC.Models.NatuurlijkPersoon",
+								"Default.ZoekPersoon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Default.ZoekOrganisatie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;odata.metadata=full;odata.streaming=true",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"handelsNaam\": \"handelsnaam 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://swi-as-odatapoc.azurewebsites.net/odata/Schuldenaars/OdataIvoPoC.Models.Organisatie/Default.ZoekOrganisatie?$expand=Handelsnamen",
+							"protocol": "https",
+							"host": [
+								"swi-as-odatapoc",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"odata",
+								"Schuldenaars",
+								"OdataIvoPoC.Models.Organisatie",
+								"Default.ZoekOrganisatie"
+							],
+							"query": [
+								{
+									"key": "$expand",
+									"value": "Handelsnamen"
 								}
 							]
 						}
